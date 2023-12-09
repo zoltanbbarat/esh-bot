@@ -30,6 +30,14 @@ class EmotionalSupportHomieBot(commands.Bot):
                 logging.error(e)
 
         @self.command()
+        async def games(ctx):
+            logging.info(f"Games command called by {ctx.author}")
+            try:
+                await ctx.send(f"Games: {', '.join(game_list)}")
+            except Exception as e:
+                logging.error(e)
+
+        @self.command()
         async def add(ctx):
             logging.info(f"Add command called by {ctx.author}")
             game = ctx.message.content.split(" ")[1]
