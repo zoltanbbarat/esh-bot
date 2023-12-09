@@ -29,6 +29,26 @@ class EmotionalSupportHomieBot(commands.Bot):
             except Exception as e:
                 logging.error(e)
 
+        @self.command()
+        async def add(ctx):
+            logging.info(f"Add command called by {ctx.author}")
+            game = ctx.message.content.split(" ")[1]
+            game_list.append(game)
+            try:
+                await ctx.send(f"Added {game} to the game list.")
+            except Exception as e:
+                logging.error(e)
+
+        @self.command()
+        async def remove(ctx):
+            logging.info(f"Remove command called by {ctx.author}")
+            game = ctx.message.content.split(" ")[1]
+            game_list.remove(game)
+            try:
+                await ctx.send(f"Removed {game} from the game list.")
+            except Exception as e:
+                logging.error(e)
+
     async def on_ready(self):
         logging.info(f"We have logged in as {self.user}")
 
